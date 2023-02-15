@@ -1,2 +1,4 @@
 #!/bin/bash
-printenv $((POWER / DIVIDE))
+echo $((POWER/DIVIDE))
+
+
