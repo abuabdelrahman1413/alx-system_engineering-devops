@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Open the file for reading
+while IFS= read -r line; do
+    # Extract fields from the line
+    username=$(echo "$line" | cut -d":" -f1)
+    group_id=$(echo "$line" | cut -d":" -f4)
+    home_directory=$(echo "$line" | cut -d":" -f6)
+    shell=$(echo "$line" | cut -d":" -f7)
+    user_id_info=$(echo "$line" | cut -d":" -f5)
+    password="*****"  # Placeholder for password
+
+    # Extract additional user info if available
+    if [ -n "$user_id_info" ]; then
+        password=$(echo "$user_id_info" | cut -d"," -f1)
+        user_id_info=$(echo "$user_id_info" | cut -d"," -f2-)
+    fi
+
+    # Print the formatted output
+    echo "Format: The user $username is part of the $group_id gang, lives in $home_directory and rides $shell."
+    echo "USER ID's place is protected by the passcode $password, more info about the user here: $user_id_info"
+    echo
+done < "/etc/passwd"
