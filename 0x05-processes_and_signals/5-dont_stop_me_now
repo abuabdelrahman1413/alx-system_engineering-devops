@@ -1,0 +1,10 @@
+#!/bin/bash
+# Search for the PID of the print_even.sh script
+
+pid=$(pgrep -f "4-to_infinity_and_beyond")
+
+# Check if the PID was found
+if [ -n "$pid" ]; then
+    # Kill the process
+    kill "$pid"
+fi
