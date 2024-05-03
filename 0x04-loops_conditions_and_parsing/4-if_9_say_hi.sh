@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Using a While loop  and if to display "Best School" 10 times
+
+# Using a While loop and if to display "Best School" 10 times
+i=0
+while [ $i -lt 10 ]
+do
+    if [ $i -eq 8 ]
+    then 
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+    # Increment the counter
+    i=$((i + 1))
+done
