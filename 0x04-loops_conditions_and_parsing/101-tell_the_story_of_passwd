@@ -3,6 +3,7 @@
 while IFS= read -r line; do
     # Extract fields from the line
     username=$(echo "$line" | cut -d":" -f1)
+    uid=$(echo "$line" | cut -d":" -f3)
     group_id=$(echo "$line" | cut -d":" -f4)
     home_directory=$(echo "$line" | cut -d":" -f6)
     shell=$(echo "$line" | cut -d":" -f7)
@@ -17,6 +18,6 @@ while IFS= read -r line; do
 
     # Print the formatted output
     echo "The user $username is part of the $group_id gang, lives in $home_directory and rides $shell."
-    echo "USER ID's place is protected by the passcode $password, more info about the user here: $user_id_info"
+    echo "$uid's place is protected by the passcode $password, more info about the user here: $user_id_info"
     echo
 done < "/etc/passwd"
