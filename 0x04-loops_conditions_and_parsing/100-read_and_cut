@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Open the file for reading
 while IFS= read -r line; do
     # Process each line of the file
