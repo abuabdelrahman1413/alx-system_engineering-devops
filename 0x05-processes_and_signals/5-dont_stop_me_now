@@ -1,5 +1,5 @@
-#!/bin/bash
-# Search for the PID of the print_even.sh script
+#!/bin/env bash
+# Search for the PID of the 4-to_infinity_and_beyond script
 
 pid=$(pgrep -f "4-to_infinity_and_beyond")
 
