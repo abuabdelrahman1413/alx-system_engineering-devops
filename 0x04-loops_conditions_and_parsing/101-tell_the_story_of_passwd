@@ -7,7 +7,7 @@ while IFS= read -r line; do
     home_directory=$(echo "$line" | cut -d":" -f6)
     shell=$(echo "$line" | cut -d":" -f7)
     user_id_info=$(echo "$line" | cut -d":" -f5)
-    password="*****"  # Placeholder for password
+    password="x"  # Placeholder for password
 
     # Extract additional user info if available
     if [ -n "$user_id_info" ]; then
