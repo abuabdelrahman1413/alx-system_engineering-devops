@@ -13,9 +13,29 @@ The image shows a high-level overview of a web infrastructure that hosts the web
 
 **Additional Elements:**
 
-* **HAProxy Load Balancer:** Distributes incoming traffic using a Round Robin algorithm, which sends each new request to the next server in line. This ensures that all servers share the load evenly.
-* **Active-Active Setup:** Both servers are active simultaneously, handling requests concurrently, which maximizes resource usage and availability.
-* **Primary-Replica Database Cluster:** A Primary (Master) node handles all write operations, and one or more Replica (Slave) nodes handle read operations. This setup improves performance and provides redundancy, as read traffic is offloaded to the replicas.
+* **HAProxy Load Balancer:** 
+  * **Distribution Algorithm:** Configured with a Round Robin algorithm.
+  * **How it Works:** The Round Robin algorithm distributes incoming requests sequentially across the available servers. When a request arrives, it is sent to the next server in the list. After reaching the last server, it cycles back to the first server. This method ensures that all servers receive an equal share of the load, helping to balance traffic and improve performance.
+  * **Setup Type:** Enables an Active-Active setup.
+
+* **Active-Active Setup:** 
+  * **Explanation:** In an Active-Active setup, both servers are active simultaneously, handling requests concurrently. This setup maximizes resource usage and availability because all servers share the load and can serve traffic at the same time. If one server fails, the other servers continue to handle the requests without any disruption.
+  
+* **Primary-Replica Database Cluster:** 
+  * **Explanation:** A Primary (Master) node handles all write operations, and one or more Replica (Slave) nodes handle read operations. This setup improves performance and provides redundancy, as read traffic is offloaded to the replicas.
+
+**Difference Between Active-Active and Active-Passive Setups:**
+
+* **Active-Active Setup:** 
+  * **Functionality:** All servers are active and handle requests simultaneously.
+  * **Advantages:** Maximizes resource utilization and availability. If one server fails, others continue to handle requests without interruption.
+  * **Example:** The described infrastructure, where both servers are active and handle requests distributed by HAProxy.
+  
+* **Active-Passive Setup:**
+  * **Functionality:** One server (active) handles all requests, while the other server (passive) remains on standby. The passive server takes over only if the active server fails.
+  * **Advantages:** Simple to configure and manage. Ensures availability during server failure.
+  * **Disadvantages:** Underutilizes resources, as the passive server is idle most of the time. Potential downtime during the failover process.
+  * **Example:** If one of the two servers were configured as a standby server, only becoming active when the primary server fails.
 
 ## Issues With This Infrastructure:
 
