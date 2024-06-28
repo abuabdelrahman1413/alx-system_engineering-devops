@@ -1,12 +1,27 @@
-#~/.local/state/nvim/swap//%home%mohammed%Projects%Alx_projects%a
+# 1-install_a_package.pp
 
-package {['python3', 'python3-pip']:
-    ensure => installed,
+# Ensure Python and pip3 are installed
+package { ['python3', 'python3-pip']:
+  ensure => installed,
 }
 
-exec {'install_flask':
-    command => '/usr/bin/pip3 install Flask==2.1',
-    path    => ['/usr/bin/'],
-    require => Package['python3-pip'],
+# Install Flask version 2.1.0 using pip3
+exec { 'install_flask':
+  command => '/usr/bin/pip3 install Flask==2.1.0',
+  path    => ['/usr/bin'],
+  require => Package['python3-pip'],
 }
 
+# 1-install_a_package.pp
+
+# Ensure Python and pip3 are installed
+package { ['python3', 'python3-pip']:
+  ensure => installed,
+}
+
+# Install Flask version 2.1.0 using pip3
+exec { 'install_flask':
+  command => '/usr/bin/pip3 install Flask==2.1.0',
+  path    => ['/usr/bin'],
+  require => Package['python3-pip'],
+}
