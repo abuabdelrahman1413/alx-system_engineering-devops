@@ -1,14 +1,16 @@
-# script configuration ssh config
-# Declare identity file
+# Define a class for SSH client configuration
+class { 'ssh_config': }
+
+# Define a resource to manage the "IdentityFile" line
 file_line { 'Declare identity file':
-  path  => '/etc/ssh/ssh_config/config',
-  line  => 'IdentityFile ~/.ssh/school',
-  match => '^IdentityFile',
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',  # Adjust path if needed on your system
+  line   => 'IdentityFile ~/.ssh/school',
 }
 
-# Turn off password authentication
+# Define a resource to disable password authentication
 file_line { 'Turn off passwd auth':
-  path  => '/etc/ssh/ssh_config/config',
-  line  => 'PasswordAuthentication no',
-  match => '^PasswordAuthentication',
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',  # Adjust path if needed on your system
+  line   => 'PasswordAuthentication no',
 }
