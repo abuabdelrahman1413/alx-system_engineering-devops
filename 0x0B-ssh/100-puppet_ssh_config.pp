@@ -3,6 +3,9 @@
 # password no
 
 class ssh {
+    file { '/etc/ssh/ssh_config':
+        ensure => 'create',
+    }
     file_line { 'Turn off passwd auth':
         ensure => 'create',
         path   => '/etc/ssh/ssh_config',
