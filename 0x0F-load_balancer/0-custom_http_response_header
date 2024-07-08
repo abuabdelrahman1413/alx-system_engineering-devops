@@ -8,4 +8,4 @@ apt install nginx -y
 sudo sed -i '/server_name _;/a \\tadd_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
 
 # Restart Nginx
-sudo systemctl restart nginx
+sudo service nginx restart
